@@ -1,67 +1,202 @@
-﻿# StudentRegistration
+🎓 Öğrenci Kayıt Sistemi
 
-## About this solution
+Bu proje, ABP.IO Framework, Angular ve DevExpress DataGrid kullanılarak geliştirilmiş katmanlı mimariye sahip bir öğrenci kayıt uygulamasıdır.
 
-This is a layered startup solution based on [Domain Driven Design (DDD)](https://abp.io/docs/latest/framework/architecture/domain-driven-design) practises. All the fundamental ABP modules are already installed. Check the [Application Startup Template](https://abp.io/docs/latest/solution-templates/layered-web-application) documentation for more info.
+🎯 Projenin Amacı
 
-### Pre-requirements
+Bu proje aşağıdaki konuları göstermek amacıyla geliştirilmiştir:
 
-* [.NET9.0+ SDK](https://dotnet.microsoft.com/download/dotnet)
-* [Node v18 or 20](https://nodejs.org/en)
+ABP.IO ile katmanlı mimari kullanımı
 
-### Configurations
+Clean Architecture prensiplerine uygun yapı
 
-The solution comes with a default configuration that works out of the box. However, you may consider to change the following configuration before running your solution:
+Generic CrudAppService ile hızlı CRUD geliştirme
 
-* Check the `ConnectionStrings` in `appsettings.json` files under the `StudentRegistration.HttpApi.Host` and `StudentRegistration.DbMigrator` projects and change it if you need.
+Entity → DTO dönüşümü (AutoMapper)
 
-### Before running the application
+EF Core ile ilişkisel veri yönetimi
 
-* Run `abp install-libs` command on your solution folder to install client-side package dependencies. This step is automatically done when you create a new solution, if you didn't especially disabled it. However, you should run it yourself if you have first cloned this solution from your source control, or added a new client-side package dependency to your solution.
-* Run `StudentRegistration.DbMigrator` to create the initial database. This step is also automatically done when you create a new solution, if you didn't especially disabled it. This should be done in the first run. It is also needed if a new database migration is added to the solution later.
+Angular ile REST API entegrasyonu
 
-#### Generating a Signing Certificate
+DevExpress Grid ile gelişmiş tablo yönetimi
 
-In the production environment, you need to use a production signing certificate. ABP Framework sets up signing and encryption certificates in your application and expects an `openiddict.pfx` file in your application.
+🚀 Kullanılan Teknolojiler
+Katman	Teknoloji
+Backend	ABP.IO (ASP.NET Core 9)
+Frontend	Angular 20
+Veritabanı	SQL Server
+ORM	Entity Framework Core
+UI Bileşenleri	DevExpress DataGrid
+Kimlik Doğrulama	OpenIddict (ABP yerleşik)
+API Dokümantasyon	Swagger
+🧱 Mimari Yapı
 
-To generate a signing certificate, you can use the following command:
+Proje ABP.IO’nun önerdiği katmanlı mimariye uygun olarak geliştirilmiştir:
 
-```bash
-dotnet dev-certs https -v -ep openiddict.pfx -p bba51fc3-1904-4509-970a-0724b76825a1
-```
+Domain → Application → Infrastructure → API → Angular UI
+🔹 Domain Katmanı
 
-> `bba51fc3-1904-4509-970a-0724b76825a1` is the password of the certificate, you can change it to any password you want.
+Temel iş varlıkları (Student, Department)
 
-It is recommended to use **two** RSA certificates, distinct from the certificate(s) used for HTTPS: one for encryption, one for signing.
+Entity tanımları
 
-For more information, please refer to: [OpenIddict Certificate Configuration](https://documentation.openiddict.com/configuration/encryption-and-signing-credentials.html#registering-a-certificate-recommended-for-production-ready-scenarios)
+🔹 Application Katmanı
 
-> Also, see the [Configuring OpenIddict](https://abp.io/docs/latest/Deployment/Configuring-OpenIddict#production-environment) documentation for more information.
+Application Service’ler
 
-### Solution structure
+DTO tanımları
 
-This is a layered monolith application that consists of the following applications:
+AutoMapper mapping işlemleri
 
-* `StudentRegistration.DbMigrator`: A console application which applies the migrations and also seeds the initial data. It is useful on development as well as on production environment.
-* `StudentRegistration.HttpApi.Host`: ASP.NET Core API application that is used to expose the APIs to the clients.
-* `angular`: Angular application.
+İş kuralları
 
+🔹 EntityFrameworkCore Katmanı
 
-## Deploying the application
+DbContext
 
-Deploying an ABP application follows the same process as deploying any .NET or ASP.NET Core application. However, there are important considerations to keep in mind. For detailed guidance, refer to ABP's [deployment documentation](https://abp.io/docs/latest/Deployment/Index).
+Migration yönetimi
 
-### Additional resources
+Veritabanı konfigürasyonu
 
+🔹 HttpApi Katmanı
 
-#### Internal Resources
+REST endpoint’leri
 
-You can find detailed setup and configuration guide(s) for your solution below:
+ABP tarafından otomatik oluşturulan API’ler
 
-* [Angular](./angular/README.md)
+🔹 Angular UI
 
-#### External Resources
-You can see the following resources to learn more about your solution and the ABP Framework:
+DevExpress DataGrid
 
-* [Web Application Development Tutorial](https://abp.io/docs/latest/tutorials/book-store/part-1)
-* [Application Startup Template](https://abp.io/docs/latest/startup-templates/application/index)
+Popup form yapısı
+
+ABP RestService ile API iletişimi
+
+🔗 Varlık İlişkileri
+
+Bir Department (Bölüm) birden fazla Student (Öğrenci) barındırabilir.
+
+Her Student yalnızca bir Department’a bağlıdır.
+
+İlişki EF Core foreign key ile kurulmuştur:
+
+public Guid DepartmentId { get; set; }
+public Department Department { get; set; }
+
+Navigation property yükleme işlemi:
+
+Repository.WithDetails(x => x.Department);
+📋 Özellikler
+✅ Bölüm Yönetimi
+
+Listeleme
+
+Ekleme
+
+Güncelleme
+
+Silme
+
+✅ Öğrenci Yönetimi
+
+Listeleme (Bölüm adı ile birlikte)
+
+Ekleme
+
+Güncelleme
+
+Silme
+
+✅ Teknik Özellikler
+
+CrudAppService ile boilerplate kod azaltımı
+
+AutoMapper ile Entity ↔ DTO dönüşümü
+
+EF Core Migration yönetimi
+
+JWT tabanlı kimlik doğrulama
+
+Swagger ile interaktif API test imkanı
+
+DevExpress Grid entegrasyonu
+
+🏗️ Proje Yapısı
+StudentRegistration/
+├── src/
+│   ├── StudentRegistration.Domain
+│   ├── StudentRegistration.Domain.Shared
+│   ├── StudentRegistration.Application.Contracts
+│   ├── StudentRegistration.Application
+│   ├── StudentRegistration.EntityFrameworkCore
+│   ├── StudentRegistration.HttpApi
+│   ├── StudentRegistration.HttpApi.Host
+│   └── StudentRegistration.DbMigrator
+└── angular/
+    └── src/app/
+        ├── department/
+        └── student/
+⚙️ Kurulum
+🔹 Backend
+
+StudentRegistration.HttpApi.Host projesini başlangıç projesi olarak ayarlayın.
+
+Uygulamayı çalıştırın.
+
+API:
+
+https://localhost:44357
+
+Swagger:
+
+https://localhost:44357/swagger
+🔹 Frontend
+cd angular
+npm install --legacy-peer-deps
+npx ng serve --port 4200
+
+Uygulama:
+
+http://localhost:4200
+🔐 Varsayılan Giriş Bilgileri
+Kullanıcı Adı	Şifre
+admin	1q2w3E*
+🗄️ Veritabanı Tabloları
+Departments
+Kolon	Tip	Açıklama
+Id	Guid	Birincil anahtar
+Name	string	Bölüm adı
+Quota	int	Kontenjan
+CreationTime	DateTime	ABP tarafından otomatik doldurulur
+Students
+Kolon	Tip	Açıklama
+Id	Guid	Birincil anahtar
+FirstName	string	Öğrenci adı
+LastName	string	Öğrenci soyadı
+NationalId	string (11)	TC Kimlik
+City	string	İl
+District	string	İlçe
+DepartmentId	Guid	Bölüm yabancı anahtarı
+🧠 Teknik Detaylar
+
+CRUD işlemleri ICrudAppService ve CrudAppService kullanılarak geliştirilmiştir.
+
+Navigation property’ler WithDetails() ile eager loading şeklinde yüklenmiştir.
+
+Mapping işlemleri AutoMapper profile sınıflarında tanımlanmıştır.
+
+EF Core Migration ile veritabanı şeması yönetilmiştir.
+
+Angular tarafında REST çağrıları ABP RestService ile yapılmıştır.
+
+🚀 Geliştirilebilir Alanlar
+
+TC Kimlik validasyonu (11 hane kontrolü)
+
+Kontenjan doluluk kontrolü (Quota validation)
+
+Rol bazlı yetkilendirme
+
+Server-side pagination ve filtering
+
+Unit test ve integration test eklenmesi
