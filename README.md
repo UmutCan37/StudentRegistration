@@ -74,6 +74,11 @@ Domain → Application → Infrastructure → API → Angular UI
 public Guid DepartmentId { get; set; }
 public Department Department { get; set; }
 
+Navigation property yükleme işlemi:
+
+Repository.WithDetails(x => x.Department);
+
+
 📋 Özellikler
 ✅ Bölüm Yönetimi
 
