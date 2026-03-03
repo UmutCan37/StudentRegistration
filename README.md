@@ -63,7 +63,12 @@ Domain → Application → Infrastructure → API → Angular UI
 - ABP RestService ile API iletişimi
 
 ---
+## 🔗 Navigation Property Yükleme
 
+Navigation property yükleme işlemi:
+
+```csharp
+Repository.WithDetails(x => x.Department);
 
 📋 Özellikler
 ✅ Bölüm Yönetimi
