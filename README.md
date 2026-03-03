@@ -31,6 +31,8 @@ Bu proje aşağıdaki konuları göstermek amacıyla geliştirilmiştir:
 | API Dokümantasyon | Swagger |
 
 ---
+<img width="1914" height="335" alt="Ekran görüntüsü 2026-03-03 162233" src="https://github.com/user-attachments/assets/f0f842c7-647f-4241-b2ae-9584019c58eb" />
+<img width="1915" height="426" alt="Ekran görüntüsü 2026-03-03 162225" src="https://github.com/user-attachments/assets/1775a01b-35e2-455a-ba72-6e5ba1efb51e" />
 
 ## 🧱 Mimari Yapı
 
