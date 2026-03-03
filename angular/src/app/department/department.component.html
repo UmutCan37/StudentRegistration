@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Departments</h2>
+    <button (click)="openAddPopup()" class="btn btn-primary">+ Add Department</button>
+  </div>
+
+  <dx-data-grid [dataSource]="departments"
+                [showBorders]="true"
+                [columnAutoWidth]="true">
+    <dxi-column dataField="name" caption="Department Name"></dxi-column>
+    <dxi-column dataField="quota" caption="Quota"></dxi-column>
+    <dxi-column caption="Actions" [width]="150" cellTemplate="actionTemplate">
+      <div *dxTemplate="let data of 'actionTemplate'">
+        <button (click)="openEditPopup(data.data)" class="btn btn-sm btn-warning me-1">Edit</button>
+        <button (click)="delete(data.data.id)" class="btn btn-sm btn-danger">Delete</button>
+      </div>
+    </dxi-column>
+  </dx-data-grid>
+
+  <dx-popup [(visible)]="isPopupVisible"
+            [title]="isEditMode ? 'Edit Department' : 'Add Department'"
+            [width]="400"
+            [height]="280">
+    <div *dxTemplate="let data of 'content'">
+      <div class="mb-3">
+        <label>Department Name</label>
+        <input [(ngModel)]="selectedDepartment.name" name="name" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label>Quota</label>
+        <input [(ngModel)]="selectedDepartment.quota" name="quota" type="number" class="form-control" />
+      </div>
+      <button type="button" (click)="save()" class="btn btn-primary">Save</button>
+    </div>
+  </dx-popup>
+</div>

@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Students</h2>
+    <button (click)="openAddPopup()" class="btn btn-primary">+ Add Student</button>
+  </div>
+
+  <dx-data-grid [dataSource]="students"
+                [showBorders]="true"
+                [columnAutoWidth]="true">
+    <dxi-column dataField="firstName" caption="First Name"></dxi-column>
+    <dxi-column dataField="lastName" caption="Last Name"></dxi-column>
+    <dxi-column dataField="nationalId" caption="National ID"></dxi-column>
+    <dxi-column dataField="city" caption="City"></dxi-column>
+    <dxi-column dataField="district" caption="District"></dxi-column>
+    <dxi-column dataField="departmentName" caption="Department"></dxi-column>
+    <dxi-column caption="Actions" [width]="150" cellTemplate="actionTemplate">
+      <div *dxTemplate="let data of 'actionTemplate'">
+        <button (click)="openEditPopup(data.data)" class="btn btn-sm btn-warning me-1">Edit</button>
+        <button (click)="delete(data.data.id)" class="btn btn-sm btn-danger">Delete</button>
+      </div>
+    </dxi-column>
+  </dx-data-grid>
+
+  <dx-popup [(visible)]="isPopupVisible"
+            [title]="isEditMode ? 'Edit Student' : 'Add Student'"
+            [width]="500"
+            [height]="480">
+    <div *dxTemplate="let data of 'content'">
+      <div class="mb-2">
+        <label>First Name</label>
+        <input [(ngModel)]="selectedStudent.firstName" name="firstName" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>Last Name</label>
+        <input [(ngModel)]="selectedStudent.lastName" name="lastName" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>National ID</label>
+        <input [(ngModel)]="selectedStudent.nationalId" name="nationalId" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>City</label>
+        <input [(ngModel)]="selectedStudent.city" name="city" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>District</label>
+        <input [(ngModel)]="selectedStudent.district" name="district" class="form-control" />
+      </div>
+      <div class="mb-2">
+        <label>Department</label>
+        <dx-select-box [dataSource]="departments"
+                       displayExpr="name"
+                       valueExpr="id"
+                       [(value)]="selectedStudent.departmentId"
+                       placeholder="Select Department">
+        </dx-select-box>
+      </div>
+      <button type="button" (click)="save()" class="btn btn-primary mt-2">Save</button>
+    </div>
+  </dx-popup>
+</div>

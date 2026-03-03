@@ -1,0 +1,108 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.3.6",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.3.6",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 14:04:43 +00:00"
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.3.6",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 14:04:43 +00:00"
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.3.6",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 14:04:43 +00:00"
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "9.3.6",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 14:04:43 +00:00"
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.3.6",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 14:04:43 +00:00"
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.3.6",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 14:04:43 +00:00"
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.3.6",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 14:04:43 +00:00"
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "StudentRegistration.Application": {
+      "path": "src/StudentRegistration.Application/StudentRegistration.Application.abppkg",
+      "folder": "src"
+    },
+    "StudentRegistration.Application.Tests": {
+      "path": "test/StudentRegistration.Application.Tests/StudentRegistration.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "StudentRegistration.Domain.Shared": {
+      "path": "src/StudentRegistration.Domain.Shared/StudentRegistration.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "StudentRegistration.Application.Contracts": {
+      "path": "src/StudentRegistration.Application.Contracts/StudentRegistration.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "StudentRegistration.HttpApi": {
+      "path": "src/StudentRegistration.HttpApi/StudentRegistration.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "StudentRegistration.HttpApi.Client": {
+      "path": "src/StudentRegistration.HttpApi.Client/StudentRegistration.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "StudentRegistration.EntityFrameworkCore.Tests": {
+      "path": "test/StudentRegistration.EntityFrameworkCore.Tests/StudentRegistration.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "StudentRegistration.EntityFrameworkCore": {
+      "path": "src/StudentRegistration.EntityFrameworkCore/StudentRegistration.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "StudentRegistration.TestBase": {
+      "path": "test/StudentRegistration.TestBase/StudentRegistration.TestBase.abppkg",
+      "folder": "test"
+    },
+    "StudentRegistration.Domain.Tests": {
+      "path": "test/StudentRegistration.Domain.Tests/StudentRegistration.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "StudentRegistration.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/StudentRegistration.HttpApi.Client.ConsoleTestApp/StudentRegistration.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "StudentRegistration.DbMigrator": {
+      "path": "src/StudentRegistration.DbMigrator/StudentRegistration.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "StudentRegistration.HttpApi.Host": {
+      "path": "src/StudentRegistration.HttpApi.Host/StudentRegistration.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "StudentRegistration.Domain": {
+      "path": "src/StudentRegistration.Domain/StudentRegistration.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}
