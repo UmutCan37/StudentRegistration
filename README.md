@@ -21,14 +21,23 @@ Angular ile REST API entegrasyonu
 DevExpress Grid ile gelişmiş tablo yönetimi
 
 🚀 Kullanılan Teknolojiler
+
 Katman	Teknoloji
+
 Backend	ABP.IO (ASP.NET Core 9)
+
 Frontend	Angular 20
+
 Veritabanı	SQL Server
+
 ORM	Entity Framework Core
+
 UI Bileşenleri	DevExpress DataGrid
-Kimlik Doğrulama	OpenIddict (ABP yerleşik)
-API Dokümantasyon	Swagger
+
+Kimlik Doğrulama OpenIddict (ABP yerleşik)
+
+API Dokümantasyon Swagger
+
 🧱 Mimari Yapı
 
 Proje ABP.IO’nun önerdiği katmanlı mimariye uygun olarak geliştirilmiştir:
