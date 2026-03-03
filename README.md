@@ -1,100 +1,79 @@
-🎓 Öğrenci Kayıt Sistemi
+# 🎓 Öğrenci Kayıt Sistemi
 
-Bu proje, ABP.IO Framework, Angular ve DevExpress DataGrid kullanılarak geliştirilmiş katmanlı mimariye sahip bir öğrenci kayıt uygulamasıdır.
+Bu proje, **ABP.IO Framework**, **Angular** ve **DevExpress DataGrid** kullanılarak geliştirilmiş katmanlı mimariye sahip bir öğrenci kayıt uygulamasıdır.
 
-🎯 Projenin Amacı
+---
+
+## 🎯 Projenin Amacı
 
 Bu proje aşağıdaki konuları göstermek amacıyla geliştirilmiştir:
 
-ABP.IO ile katmanlı mimari kullanımı
+- ABP.IO ile katmanlı mimari kullanımı
+- Clean Architecture prensiplerine uygun yapı
+- Generic `CrudAppService` ile hızlı CRUD geliştirme
+- Entity → DTO dönüşümü (AutoMapper)
+- EF Core ile ilişkisel veri yönetimi
+- Angular ile REST API entegrasyonu
+- DevExpress Grid ile gelişmiş tablo yönetimi
 
-Clean Architecture prensiplerine uygun yapı
+---
 
-Generic CrudAppService ile hızlı CRUD geliştirme
+## 🚀 Kullanılan Teknolojiler
 
-Entity → DTO dönüşümü (AutoMapper)
+| Katman | Teknoloji |
+|--------|-----------|
+| Backend | ABP.IO (ASP.NET Core 9) |
+| Frontend | Angular 20 |
+| Veritabanı | SQL Server |
+| ORM | Entity Framework Core |
+| UI Bileşenleri | DevExpress DataGrid |
+| Kimlik Doğrulama | OpenIddict (ABP yerleşik) |
+| API Dokümantasyon | Swagger |
 
-EF Core ile ilişkisel veri yönetimi
+---
 
-Angular ile REST API entegrasyonu
-
-DevExpress Grid ile gelişmiş tablo yönetimi
-
-🚀 Kullanılan Teknolojiler
-
-Katman	Teknoloji
-
-Backend	ABP.IO (ASP.NET Core 9)
-
-Frontend	Angular 20
-
-Veritabanı	SQL Server
-
-ORM	Entity Framework Core
-
-UI Bileşenleri	DevExpress DataGrid
-
-Kimlik Doğrulama OpenIddict (ABP yerleşik)
-
-API Dokümantasyon Swagger
-
-🧱 Mimari Yapı
+## 🧱 Mimari Yapı
 
 Proje ABP.IO’nun önerdiği katmanlı mimariye uygun olarak geliştirilmiştir:
 
 Domain → Application → Infrastructure → API → Angular UI
-🔹 Domain Katmanı
 
-Temel iş varlıkları (Student, Department)
+### 🔹 Domain Katmanı
+- Temel iş varlıkları (Student, Department)
+- Entity tanımları
 
-Entity tanımları
+### 🔹 Application Katmanı
+- Application Service’ler
+- DTO tanımları
+- AutoMapper mapping işlemleri
+- İş kuralları
 
-🔹 Application Katmanı
+### 🔹 EntityFrameworkCore Katmanı
+- DbContext
+- Migration yönetimi
+- Veritabanı konfigürasyonu
 
-Application Service’ler
+### 🔹 HttpApi Katmanı
+- REST endpoint’leri
+- ABP tarafından otomatik oluşturulan API’ler
 
-DTO tanımları
+### 🔹 Angular UI
+- DevExpress DataGrid
+- Popup form yapısı
+- ABP RestService ile API iletişimi
 
-AutoMapper mapping işlemleri
+---
 
-İş kuralları
+## 🔗 Varlık İlişkileri
 
-🔹 EntityFrameworkCore Katmanı
+- Bir **Department (Bölüm)** birden fazla **Student (Öğrenci)** barındırabilir.
+- Her **Student** yalnızca bir **Department**’a bağlıdır.
+- İlişki EF Core foreign key ile kurulmuştur:
 
-DbContext
-
-Migration yönetimi
-
-Veritabanı konfigürasyonu
-
-🔹 HttpApi Katmanı
-
-REST endpoint’leri
-
-ABP tarafından otomatik oluşturulan API’ler
-
-🔹 Angular UI
-
-DevExpress DataGrid
-
-Popup form yapısı
-
-ABP RestService ile API iletişimi
-
-🔗 Varlık İlişkileri
-
-Bir Department (Bölüm) birden fazla Student (Öğrenci) barındırabilir.
-
-Her Student yalnızca bir Department’a bağlıdır.
-
-İlişki EF Core foreign key ile kurulmuştur:
-
+```csharp
 public Guid DepartmentId { get; set; }
 public Department Department { get; set; }
 
-Navigation property yükleme işlemi:
-
-Repository.WithDetails(x => x.Department);
 📋 Özellikler
 ✅ Bölüm Yönetimi
 
@@ -131,20 +110,22 @@ Swagger ile interaktif API test imkanı
 DevExpress Grid entegrasyonu
 
 🏗️ Proje Yapısı
+
 StudentRegistration/
 ├── src/
-│   ├── StudentRegistration.Domain
-│   ├── StudentRegistration.Domain.Shared
-│   ├── StudentRegistration.Application.Contracts
-│   ├── StudentRegistration.Application
-│   ├── StudentRegistration.EntityFrameworkCore
-│   ├── StudentRegistration.HttpApi
-│   ├── StudentRegistration.HttpApi.Host
-│   └── StudentRegistration.DbMigrator
+│ ├── StudentRegistration.Domain
+│ ├── StudentRegistration.Domain.Shared
+│ ├── StudentRegistration.Application.Contracts
+│ ├── StudentRegistration.Application
+│ ├── StudentRegistration.EntityFrameworkCore
+│ ├── StudentRegistration.HttpApi
+│ ├── StudentRegistration.HttpApi.Host
+│ └── StudentRegistration.DbMigrator
 └── angular/
-    └── src/app/
-        ├── department/
-        └── student/
+└── src/app/
+├── department/
+└── student/
+
 ⚙️ Kurulum
 🔹 Backend
 
@@ -153,20 +134,19 @@ StudentRegistration.HttpApi.Host projesini başlangıç projesi olarak ayarlayı
 Uygulamayı çalıştırın.
 
 API:
-
 https://localhost:44357
 
 Swagger:
-
 https://localhost:44357/swagger
+
 🔹 Frontend
 cd angular
 npm install --legacy-peer-deps
 npx ng serve --port 4200
 
 Uygulama:
-
 http://localhost:4200
+
 🔐 Varsayılan Giriş Bilgileri
 Kullanıcı Adı	Şifre
 admin	1q2w3E*
