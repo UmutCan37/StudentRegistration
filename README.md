@@ -64,20 +64,12 @@ Domain → Application → Infrastructure → API → Angular UI
 
 ---
 
-## 🔗 Varlık İlişkileri
-
-- Bir **Department (Bölüm)** birden fazla **Student (Öğrenci)** barındırabilir.
-- Her **Student** yalnızca bir **Department**’a bağlıdır.
-- İlişki EF Core foreign key ile kurulmuştur:
-
-```csharp
-public Guid DepartmentId { get; set; }
-public Department Department { get; set; }
+## 🔗 Navigation Property Yükleme
 
 Navigation property yükleme işlemi:
 
+```csharp
 Repository.WithDetails(x => x.Department);
-
 
 📋 Özellikler
 ✅ Bölüm Yönetimi
@@ -115,22 +107,20 @@ Swagger ile interaktif API test imkanı
 DevExpress Grid entegrasyonu
 
 🏗️ Proje Yapısı
-
 StudentRegistration/
 ├── src/
-│ ├── StudentRegistration.Domain
-│ ├── StudentRegistration.Domain.Shared
-│ ├── StudentRegistration.Application.Contracts
-│ ├── StudentRegistration.Application
-│ ├── StudentRegistration.EntityFrameworkCore
-│ ├── StudentRegistration.HttpApi
-│ ├── StudentRegistration.HttpApi.Host
-│ └── StudentRegistration.DbMigrator
+│   ├── StudentRegistration.Domain
+│   ├── StudentRegistration.Domain.Shared
+│   ├── StudentRegistration.Application.Contracts
+│   ├── StudentRegistration.Application
+│   ├── StudentRegistration.EntityFrameworkCore
+│   ├── StudentRegistration.HttpApi
+│   ├── StudentRegistration.HttpApi.Host
+│   └── StudentRegistration.DbMigrator
 └── angular/
-└── src/app/
-├── department/
-└── student/
-
+    └── src/app/
+        ├── department/
+        └── student/
 ⚙️ Kurulum
 🔹 Backend
 
@@ -139,30 +129,31 @@ StudentRegistration.HttpApi.Host projesini başlangıç projesi olarak ayarlayı
 Uygulamayı çalıştırın.
 
 API:
+
 https://localhost:44357
 
 Swagger:
-https://localhost:44357/swagger
 
+https://localhost:44357/swagger
 🔹 Frontend
 cd angular
 npm install --legacy-peer-deps
 npx ng serve --port 4200
 
 Uygulama:
-http://localhost:4200
 
+http://localhost:4200
 🔐 Varsayılan Giriş Bilgileri
 Kullanıcı Adı	Şifre
 admin	1q2w3E*
 🗄️ Veritabanı Tabloları
-Departments
+📘 Departments
 Kolon	Tip	Açıklama
 Id	Guid	Birincil anahtar
 Name	string	Bölüm adı
 Quota	int	Kontenjan
 CreationTime	DateTime	ABP tarafından otomatik doldurulur
-Students
+📘 Students
 Kolon	Tip	Açıklama
 Id	Guid	Birincil anahtar
 FirstName	string	Öğrenci adı
