@@ -70,6 +70,7 @@ Navigation property yükleme işlemi:
 ```csharp
 Repository.WithDetails(x => x.Department);
 
+
 📋 Özellikler
 ✅ Bölüm Yönetimi
 
@@ -120,6 +121,8 @@ StudentRegistration/
     └── src/app/
         ├── department/
         └── student/
+
+
 ⚙️ Kurulum
 🔹 Backend
 
@@ -134,7 +137,9 @@ https://localhost:44357
 Swagger:
 
 https://localhost:44357/swagger
+
 🔹 Frontend
+
 cd angular
 npm install --legacy-peer-deps
 npx ng serve --port 4200
@@ -142,25 +147,44 @@ npx ng serve --port 4200
 Uygulama:
 
 http://localhost:4200
+
 🔐 Varsayılan Giriş Bilgileri
+
 Kullanıcı Adı	Şifre
+
 admin	1q2w3E*
+
 🗄️ Veritabanı Tabloları
+
 📘 Departments
+
 Kolon	Tip	Açıklama
+
 Id	Guid	Birincil anahtar
+
 Name	string	Bölüm adı
+
 Quota	int	Kontenjan
+
 CreationTime	DateTime	ABP tarafından otomatik doldurulur
+
 📘 Students
 Kolon	Tip	Açıklama
+
 Id	Guid	Birincil anahtar
+
 FirstName	string	Öğrenci adı
+
 LastName	string	Öğrenci soyadı
+
 NationalId	string (11)	TC Kimlik
+
 City	string	İl
+
 District	string	İlçe
+
 DepartmentId	Guid	Bölüm yabancı anahtarı
+
 🧠 Teknik Detaylar
 
 CRUD işlemleri ICrudAppService ve CrudAppService kullanılarak geliştirilmiştir.
